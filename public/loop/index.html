@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Number Operations</title>
+  
+  <!-- Google Fonts for better typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="./css/style.css"/>
+  
+  <!-- JavaScript Files -->
+  <script src="./js/loop.js" defer></script>
+  <script src="./js/math.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <h1>🔢 Number Operations</h1>
+
+    <div class="input-group">
+      <input type="number" id="number" placeholder="Enter a number" />
+    </div>
+
+    <div class="button-group">
+      <button onclick="sum()">Sum</button>
+      <button onclick="factorial()">Factorial</button>
+      <button onclick="odd()">Odd</button>
+      <button onclick="even()">Even</button>
+    </div>
+
+    <div class="output">
+      <p id="display">Result will be shown here.</p>
+    </div>
+  </div>
+</body>
+</html>

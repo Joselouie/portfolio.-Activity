@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/array.js"></script>
+    <script src="./js/object.js"></script>
+    <script>
+        let employees = [
+            {
+                "emp_id": "123",
+                "name": "Elon Musk",
+                "position": "CEO"
+            },
+            {
+                "emp_id": "423",
+                "name": "Elon Tusk",
+                "position": "CEO"
+            }
+        ];
+
+        function showEmployees() {
+            const tableBody = document.getElementById('employee-body');
+            tableBody.innerHTML = ''; 
+
+            employees.forEach(employee => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${employee.emp_id}</td>
+                    <td>${employee.name}</td>
+                    <td>${employee.position}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function addEmployee() {
+            const id = document.getElementById('emp_id').value;
+            const name = document.getElementById('emp_name').value;
+            const position = document.getElementById('emp_position').value;
+
+            if (id && name && position) {
+                employees.push({ emp_id: id, name: name, position: position });
+                showEmployees(); 
+                clearEmployeeFields();
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function clearEmployeeFields() {
+            document.getElementById('emp_id').value = '';
+            document.getElementById('emp_name').value = '';
+            document.getElementById('emp_position').value = '';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Management</h2>
+        <input type="text" id="emp_id" placeholder="Employee ID">
+        <input type="text" id="emp_name" placeholder="Employee Name">
+        <input type="text" id="emp_position" placeholder="Position">
+        <button type="button" onclick="addEmployee()">Add Employee</button>
+        <button type="button" onclick="showEmployees()">Show Employees</button>
+        
+        <table id="employee">
+            <thead>
+                <tr>
+                    <th>EMPLOYEE ID</th>
+                    <th>NAME</th>
+                    <th>POSITION</th>
+                </tr>
+            </thead>
+            <tbody id="employee-body">
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
