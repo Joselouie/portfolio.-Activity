@@ -20,42 +20,50 @@ function App() {
   };
 
   const projects = [
-  {
-    id: 1,
-    title: "Calculator",
-    description: "A full-stack e-commerce solution with React, Node.js, and MongoDB",
-    tags: ["React", "Node.js", "MongoDB"],
-    link: "public/calculator/index.html"
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    description: "Productivity application with drag-and-drop functionality",
-    tags: ["TypeScript", "React", "Firebase"],
-    link: "https://github.com/yourusername/task-management-app"
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    description: "Responsive portfolio design with dark/light mode",
-    tags: ["React", "Tailwind CSS", "Framer Motion"],
-    link: "https://yourportfolio.com"
-  },
-  {
-    id: 4,
-    title: "API Integration Project",
-    description: "Custom dashboard integrating multiple third-party APIs",
-    tags: ["JavaScript", "REST API", "Chart.js"],
-    link: "https://github.com/yourusername/api-integration-dashboard"
-  },
-  {
-    id: 5,
-    title: "Mobile Fitness App",
-    description: "Cross-platform fitness tracking application",
-    tags: ["React Native", "Redux", "Firebase"],
-    link: "https://github.com/yourusername/mobile-fitness-app"
-  }
-];
+    {
+      id: 1,
+      title: "Calculator",
+      description: "A full-stack e-commerce solution with React, Node.js, and MongoDB",
+      tags: ["React", "Node.js", "MongoDB"],
+      link: "/calculator/index.html",
+      image: "/calculator.png"
+    },
+    {
+      id: 2,
+      title: "Loop",
+      description: "Performs sum, factorial, odd/even operations on input number",
+      tags: ["HTML", "JavaScript", "CSS"],
+      link: "/loop/index.html",
+      image: "/2.png"
+    },
+    {
+      id: 3,
+      title: "Employee Management",
+      description: "Add and display employee data using basic HTML, JS, and DOM manipulation.",
+      tags: ["HTML", "JavaScript", "DOM"],
+      link: "/array/index.html",
+      image: "/3.png"
+    },
+    {
+      id: 4,
+      title: "Login Page",
+      description: "A basic login form styled using internal CSS.",
+      tags: ["HTML", "CSS"],
+      link: "/CSS_Selectors/index.html",
+      image: "/4.png"
+    },
+    {
+      id: 5,
+      title: "CSS Demo",
+      description: "Demonstrates Inline, Internal, and External CSS styling methods.",
+      tags: ["HTML", "CSS", "Styling"],
+      link: "/CSS_Type/index.html",
+      image: "/5.png"
+    }
+
+
+
+  ];
 
 
   return (
@@ -70,11 +78,10 @@ function App() {
               {['home', 'about', 'projects', 'social'].map((section) => (
                 <button
                   key={section}
-                  className={`px-4 py-2 rounded-md font-medium transition-colors duration-200 ${
-                    activeSection === section
-                      ? 'bg-green-600 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                  }`}
+                  className={`px-4 py-2 rounded-md font-medium transition-colors duration-200 ${activeSection === section
+                    ? 'bg-green-600 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    }`}
                   onClick={() => handleNavigation(section)}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -89,7 +96,7 @@ function App() {
               </svg>
             </button>
           </div>
-          
+
           {/* Mobile Dropdown Menu */}
           {menuOpen && (
             <div className="md:hidden bg-gray-800 text-white mt-2 py-2 rounded-md shadow-md">
@@ -133,13 +140,13 @@ function App() {
               Passionate about solving problems through clean, efficient code and intuitive design.
             </p>
             <div className="flex justify-center space-x-4">
-              <button 
+              <button
                 onClick={() => handleNavigation('projects')}
                 className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-md transition-colors duration-200"
               >
                 View My Work
               </button>
-              <button 
+              <button
                 onClick={() => handleNavigation('social')}
                 className="border border-green-600 text-green-400 hover:bg-gray-800 font-medium py-2 px-6 rounded-md transition-colors duration-200"
               >
@@ -173,7 +180,7 @@ function App() {
               <div className="bg-gray-800 rounded-xl p-6 shadow-lg">
                 <h3 className="text-xl font-semibold mb-4 text-green-400">Skills & Technologies</h3>
                 <ul className="space-y-2">
-                  {[ 
+                  {[
                     'React & Next.js', 'Node.js & Express', 'TypeScript',
                     'Tailwind CSS', 'MongoDB & PostgreSQL', 'GraphQL',
                     'Docker & Kubernetes', 'AWS & GCP', 'CI/CD Pipelines'
@@ -213,9 +220,14 @@ function App() {
                   key={project.id}
                   className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-700 hover:border-green-500"
                 >
-                  <div className="h-48 bg-gradient-to-r from-green-600 to-green-800 flex items-center justify-center">
-                    <span className="text-white text-4xl font-bold opacity-30">#{project.id}</span>
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
+
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
                     <p className="text-gray-400 mb-4">{project.description}</p>
@@ -228,17 +240,15 @@ function App() {
                     </div>
                     <div className="flex space-x-3">
                       <a
-                        href={projects.link}
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-sm bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition-colors duration-200"
                       >
                         View Project
                       </a>
-                      <a
-                        href="#"
-                        className="text-sm border border-gray-600 hover:bg-gray-700 text-gray-300 py-2 px-4 rounded transition-colors duration-200"
-                      >
-                        Source Code
-                      </a>
+
+
                     </div>
                   </div>
                 </div>
@@ -286,7 +296,7 @@ function App() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold mb-6 text-green-400">Social Media</h3>
                   <div className="space-y-4">
